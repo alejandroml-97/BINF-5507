@@ -68,9 +68,9 @@ def remove_outliers(data, threshold=3):
     outliers = z_scores > 3
     
     # Removing outliers from DataFrame by having as threshold 3 standard deviations
-    data[(z_scores < threshold).all(axis=1)]
+    data = data[(z_scores < threshold).all(axis=1)]
 
-    pass
+    return data
 
 # 4. Normalize Numerical Data
 def normalize_data(data,method='minmax'):
@@ -103,7 +103,7 @@ def remove_redundant_features(data, threshold=0.9):
             if abs(correlation_matrix.iloc[i, j]) > threshold:
                 colname = correlation_matrix.columns[i]
                 columns_to_drop.add(colname)
-    data.drop(columns=columns_to_drop)
+    data.drop(columns=columns_to_drop, inplace=True)
 
     pass
 
