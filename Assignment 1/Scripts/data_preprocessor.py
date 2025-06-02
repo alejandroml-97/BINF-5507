@@ -95,7 +95,8 @@ def remove_redundant_features(data, threshold=0.9):
     :return: pandas DataFrame
     """
     # Remove redundant features based on the correlation threshold (HINT: you can use the corr() method)
-
+    # I used ChatGPT to help me remove the redundant features from the dataset as I was having
+    # a bit of an issue understanding how to work with the diagonal matrix
     columns_to_drop = set()
     correlation_matrix = data.corr(numeric_only=True)
     for i in range(len(correlation_matrix.columns)):
